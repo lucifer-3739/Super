@@ -1,0 +1,1 @@
+to run the docker data base : "docker compose up"
