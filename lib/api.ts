@@ -125,21 +125,21 @@ export const getInitialMessages = async (userId: string, chatId: string) => {
 export const getUserWorkspaceRole = async (
   workspace_id: string,
   userId: string
-): Promise<UserPermission | null> => {
+) => {
   const res = await fetch(
     `${domain}/api/workspace/get/user_role?workspaceId=${workspace_id}&userId=${userId}`,
-    { method: "GET", cache: "no-store" }
+    {
+      method: "GET",
+      cache: "no-store",
+    }
   );
 
   if (!res.ok) {
-    const error = await res.json();
-    console.error("Error fetching user role:", error);
     return null;
   }
 
   return res.json() as Promise<UserPermission>;
 };
-
 
 export const getTask = async (task_id: string, userId: string) => {
   const res = await fetch(

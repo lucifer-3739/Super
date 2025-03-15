@@ -1,7 +1,8 @@
-import { FcGoogle } from "react-icons/fc";
+import { AppleLogo } from "../svg/AppleLogo";
+import { GithubLogo } from "../svg/GithubLogo";
+import { GoogleLogo } from "../svg/GoogleLogo";
 import { ProviderSignInBtn } from "./ProviderSignInBtn";
 import { useTranslations } from "next-intl";
-import { FaGithub } from "react-icons/fa";
 
 export const ProviderSignInBtns = ({
   signInCard,
@@ -21,7 +22,7 @@ export const ProviderSignInBtns = ({
         providerName="google"
         className="w-full rounded-[1.9rem] border text-sm h-12 sm:h-10 sm:text-base"
       >
-        <FcGoogle className="mr-2" width={20} height={20} />
+        <GoogleLogo className="mr-2" width={20} height={20} />
         {signInCard
           ? t("SIGN_IN.PROVIDERS.GOOGLE")
           : t("SIGN_UP.PROVIDERS.GOOGLE")}
@@ -41,7 +42,7 @@ export const ProviderSignInBtns = ({
         providerName="github"
         className="w-full rounded-[1.9rem] border text-sm h-12 sm:h-10 sm:text-base"
       >
-        <FaGithub className="fill-foreground mr-2" width={20} height={20} />
+        <GithubLogo className="fill-foreground mr-2" width={20} height={20} />
         {signInCard
           ? t("SIGN_IN.PROVIDERS.GITHUB")
           : t("SIGN_UP.PROVIDERS.GITHUB")}

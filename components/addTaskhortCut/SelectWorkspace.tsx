@@ -56,7 +56,7 @@ export const SelectWorkspace = ({
         >
             <div className="flex items-center gap-2">
                 <div
-                    className={`w-10 h-10 rounded-md shadow-sm text-white font-bold flex justify-center items-center ${workspaceColor}`}
+                    className={`w-10 h-10 rounded-md shadow-sm dark:text-black text-white font-bold flex justify-center items-center ${workspaceColor}`}
                 >
                     {workspace.image ? (
                         <Image

@@ -5,8 +5,7 @@ import { Tag } from "@prisma/client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useUserActivityStatus } from "./UserActivityStatus";
 import { useQuery } from "@tanstack/react-query";
-import { useParams, useSearchParams } from "next/navigation";
-import { useRouter } from "next-intl/client";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
   children: React.ReactNode;

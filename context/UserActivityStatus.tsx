@@ -6,7 +6,6 @@ import { UserActiveItemList } from "@/types/extended";
 import { UserPermission } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
-import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import {
   createContext,
@@ -148,8 +147,13 @@ export const UserActivityStatusProvider = ({ children }: Props) => {
 };
 
 export const useUserActivityStatus = () => {
-  const ctx = useContext(UserActivityStatusCtx);
-  if (!ctx) throw new Error("invalid use");
+  const context = useContext(UserActivityStatusCtx);
 
-  return ctx;
+  if (context === undefined || context === null) {
+    throw new Error(
+      'useUserActivityStatus must be used within a UserActivityStatusCtx.Provider'
+    );
+  }
+
+  return context;
 };

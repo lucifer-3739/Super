@@ -7,7 +7,7 @@ import GithubProvider from "next-auth/providers/github";
 import AppleProvider from "next-auth/providers/apple";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-import { generateFromEmail } from "unique-username-generator"
+import { generateFromEmail } from "unique-username-generator";
 
 export const authOptions: NextAuthOptions = {
   session: {

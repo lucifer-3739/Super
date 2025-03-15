@@ -4,14 +4,14 @@ import { OnboardingFormProvider } from "@/context/OnboardingForm";
 import { checkIfUserCompletedOnboarding } from "@/lib/checkIfUserCompletedOnboarding";
 
 const Onboarding = async () => {
-    const session = await checkIfUserCompletedOnboarding("/onboarding");
+  const session = await checkIfUserCompletedOnboarding("/onboarding");
 
-    return (
-        <OnboardingFormProvider session={session}>
-            <AdditionalInfoSection profileImage={session.user.image} />
-            <SummarySection />
-        </OnboardingFormProvider>
-    );
+  return (
+    <OnboardingFormProvider session={session}>
+      <AdditionalInfoSection profileImage={session.user.image} />
+      <SummarySection />
+    </OnboardingFormProvider>
+  );
 };
 
 export default Onboarding;

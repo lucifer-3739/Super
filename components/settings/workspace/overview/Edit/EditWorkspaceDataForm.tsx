@@ -24,12 +24,12 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios, { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
 import { LoadingState } from "@/components/ui/loadingState";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { colors } from "@/lib/getRandomWorkspaceColor";
 import Warning from "@/components/ui/warning";
-import { useRouter } from "next/navigation";
 
 interface Props {
   workspace: SettingsWorkspace;
@@ -82,7 +82,7 @@ export const EditorWorkspaceDataForm = ({
   };
 
   const { toast } = useToast();
-  const m = useTranslations("MESSAGES");
+  const m = useTranslations("MESSAGE");
   const router = useRouter();
 
   const { mutate: editWorkspaceData, isPending } = useMutation({
@@ -187,7 +187,7 @@ export const EditorWorkspaceDataForm = ({
         <Button
           disabled={!form.formState.isValid || isPending}
           type="submit"
-          className="mt-10 w-full dark:text-black text-white font-semibold"
+          className="mt-10 w-full dark:text-white font-semibold"
         >
           {isPending ? (
             <LoadingState loadingText={t("BTN_PENDING")} />

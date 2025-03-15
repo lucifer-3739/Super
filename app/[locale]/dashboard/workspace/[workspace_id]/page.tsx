@@ -1,57 +1,67 @@
-import { AddTaskShortcut } from "@/components/addTaskhortCut/AddTaskShortcut";
+import { AddTaskShortcut } from "@/components/addTaskShortCut/AddTaskShortcut";
 import { DashboardHeader } from "@/components/header/DashboardHeader";
 import { InviteUsers } from "@/components/inviteUsers/InviteUsers";
-import { WorkspaceTab } from "@/components/settings/workspace/WorkspaceTab";
-import { getWorkspaceSettings } from "@/lib/api";
+import { LeaveWorkspace } from "@/components/workspaceMainPage/shortcuts/leaveWorkspace/LeaveWorkspace";
+import { FilterContainer } from "@/components/workspaceMainPage/filter/FilterContainer";
+import { ShortcutContainer } from "@/components/workspaceMainPage/shortcuts/ShortcutContainer";
+import {
+  getUserWorkspaceRole,
+  getWorkspaceWithChatId,
+} from "@/lib/api";
 import { checkIfUserCompletedOnboarding } from "@/lib/checkIfUserCompletedOnboarding";
+import { FilterByUsersAndTagsInWorkspaceProvider } from "@/context/FilterByUsersAndTagsInWorkspace";
+import { RecentActivityContainer } from "@/components/workspaceMainPage/recentActivity/RecentActivityContainer";
 import { notFound } from "next/navigation";
 
 interface Params {
-    params: {
-        workspace_id: string;
-    };
+  params: {
+    workspace_id: string;
+  };
 }
 
 const Workspace = async ({ params: { workspace_id } }: Params) => {
-    const session = await checkIfUserCompletedOnboarding(
-        `/dashboard/settings/workplace/${workspace_id}`
-    );
-    const workspace = await getWorkspaceSettings(workspace_id, session.user.id);
-    if (!workspace) notFound();
-    const user = workspace.subscribers.find(
-        (subscriber) => subscriber.user.id === session.user.id
-    );
+  const session = await checkIfUserCompletedOnboarding(
+    `/dashboard/workspace/${workspace_id}`
+  );
 
-    return (
-        <>
-            <DashboardHeader
-                className="mb-2 sm:mb-0"
-                addManualRoutes={[
-                    {
-                        name: "DASHBOARD",
-                        href: "/dashboard",
-                        useTranslate: true,
-                    },
-                    {
-                        name: "settings",
-                        href: "/dashboard/settings",
-                    },
-                    {
-                        name: workspace.name,
-                        href: "/",
-                    },
-                ]}
-            >
-                {(user?.userRole === "ADMIN" || user?.userRole === "OWNER") && (
-                    <InviteUsers workspace={workspace} />
-                )}
-                <AddTaskShortcut userId={session.user.id} />
-            </DashboardHeader>
-            <main className="flex flex-col gap-2">
-                <WorkspaceTab workspace={workspace} workspaceId={workspace.id} />
-            </main>
-        </>
-    );
+  const [workspace, userRole] = await Promise.all([
+    getWorkspaceWithChatId(workspace_id, session.user.id),
+    getUserWorkspaceRole(workspace_id, session.user.id),
+  ]);
+
+  if (!workspace || !userRole) notFound();
+
+  return (
+    <FilterByUsersAndTagsInWorkspaceProvider>
+      <DashboardHeader
+        addManualRoutes={[
+          {
+            name: "DASHBOARD",
+            href: "/dashboard",
+            useTranslate: true,
+          },
+          {
+            name: workspace.name,
+            href: `/dashboard/workspace/${workspace_id}`,
+          },
+        ]}
+      >
+        {(userRole === "ADMIN" || userRole === "OWNER") && (
+          <InviteUsers workspace={workspace} />
+        )}
+        {userRole !== "OWNER" && <LeaveWorkspace workspace={workspace} />}
+        <AddTaskShortcut userId={session.user.id} />
+      </DashboardHeader>
+      <main className="flex flex-col gap-2 w-full">
+        <ShortcutContainer workspace={workspace} userRole={userRole} />
+        <FilterContainer sessionUserId={session.user.id} />
+        <RecentActivityContainer
+          userId={session.user.id}
+          workspaceId={workspace.id}
+        />
+      </main>
+    </FilterByUsersAndTagsInWorkspaceProvider>
+  );
 };
 
 export default Workspace;

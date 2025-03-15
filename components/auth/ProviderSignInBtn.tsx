@@ -26,7 +26,7 @@ export const ProviderSignInBtn = ({
     setShowLoggedInfo(true);
     try {
       await signIn(providerName, { callbackUrl: `/${locale}/onboarding` });
-    } catch (err) { }
+    } catch (err) {}
     onLoading(false);
   };
 

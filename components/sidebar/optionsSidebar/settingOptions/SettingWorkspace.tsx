@@ -63,7 +63,7 @@ export const SettingsWorkspace = ({
                 />
             ) : (
                 <div
-                    className={`rounded-md text-white dark:text-black font-bold h-7 w-7 flex justify-center items-center ${workspaceColor}`}
+                    className={`rounded-md dark:text-black text-white font-bold h-7 w-7 flex justify-center items-center ${workspaceColor}`}
                 >
                     <p>{name[0].toUpperCase()}</p>
                 </div>

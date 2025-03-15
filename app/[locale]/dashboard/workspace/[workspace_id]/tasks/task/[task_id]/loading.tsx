@@ -1,7 +1,7 @@
 import { LoadingScreen } from "@/components/common/LoadingScreen";
 
 const Loading = () => {
-    return <LoadingScreen />;
+  return <LoadingScreen />;
 };
 
 export default Loading;

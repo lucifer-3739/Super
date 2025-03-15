@@ -55,8 +55,7 @@
   },
   "CHANGE_PROFILE_IMAGE": {
     "TITLE": "Send a photo!",
-    "BUTTON": "Choose a photo",
-    "HOVER":"Edit Photo"
+    "BUTTON": "Choose a photo"
   },
   "ONBOARDING_FORM": {
     "FIRST_STEP": {
@@ -70,8 +69,8 @@
         "SURNAME": "Surname"
       },
       "PLACEHOLDER": {
-        "NAME": "First name",
-        "SURNAME": "Last name"
+        "NAME": "Vineeth",
+        "SURNAME": "Reddy"
       }
     },
     "SECOND_STEP": {
@@ -119,7 +118,6 @@
   },
   "MESSAGES": {
     "ERRORS": {
-      "Something went wrong": "Something went wrong. Please try again.",
       "DEFAULT": "Oh no..Something went wrong. Please try again",
       "TAKEN_USERNAME": "This username is already taken",
       "TAKEN_EMAIL": "This email is already in use...",
@@ -142,9 +140,7 @@
       "IMAGE_PROFILE_DELETE": "Your profile image has been deleted!",
       "ONBOARDING_COMPLETE": "Welcome to Super Productive!",
       "PASSWORD_CHANGED": "Password has been changed!",
-      "NEW_WORKSPACE": "The workspace has been created!",
-      "REGENERATED_LINK":"Invite Link Generated successfully",
-      "UPDATED_WORKSPACE": "Workspace updated successfully"
+      "NEW_WORKSPACE": "The workspace has been created!"
     },
     "PENDING": {
       "LOADING": "Please wait"
@@ -261,9 +257,6 @@
       "BY": "by",
       "IN": " - in"
     }
-  },
-  "MISSING":{
-    "MESSAGE":"MISSING message"
   },
   "PERMISSIONS": {
     "WAIT": "Please wait",
@@ -480,7 +473,6 @@
     "ACCOUNT": {
       "TITLE": "Account",
       "DESC": "Manage your Super Productive account. All changes to your account will be applied to all workspaces.",
-      "NO_LANGUAGE":"Languade is not supported",
       "IMAGE": "PROFILE IMAGE",
       "USERNAME": "USERNAME",
       "FIRST_NAME": "FIRST NAME (OPTIONAL)",
@@ -513,9 +505,9 @@
       "DESC": "You can change your password here. Remember that it should contain atleast 6 characters, at least one upper and lower case letter and at least one number",
       "WARNING": {
         "FIRST": "The password can be changed",
-        "SECOND": "only for accounts created through the form on the site ",
+        "SECOND": "only for accounts created through the form on the site",
         "THIRD": "If you have created an account via Google or Github button, ",
-        "FOURTH": "it is not possible to change the password ",
+        "FOURTH": "it is not possible to change the password",
         "FIFTH": "due to another method of account authorization."
       },
       "FORM": {

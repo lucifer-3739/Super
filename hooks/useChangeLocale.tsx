@@ -1,19 +1,22 @@
 "use client";
 
-import { usePathname, useRouter } from "next-intl/client";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 
 export const useChangeLocale = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isPending, startTransition] = useTransition();
 
+  const locales = ['en', 'mr', 'hi'];
+
   const router = useRouter();
   const pathname = usePathname();
 
-  const onSelectChange = (nextLocale: "te" | "en") => {
+  const onSelectChange = (nextLocale: "mr" | "en" | "hi") => {
     setIsLoading(true);
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      const newPathname = `/${nextLocale}${pathname?.replace(/^\/(en|mr|hi)/, "") || ""}`;
+      router.replace(newPathname);
     });
   };
 

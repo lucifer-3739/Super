@@ -55,7 +55,7 @@ export const WorkspaceComponent = ({
                 <ActiveLink
                     include={`/${href}/${id}`}
                     workspaceIcon
-                    className={`text-white font-bold ${!image && workspaceColor}`}
+                    className={`dark:text-black text-white font-bold ${!image && workspaceColor}`}
                     variant={image ? "ghost" : "default"}
                     href={`${href}/${id}`}
                     size={"icon"}
